@@ -1,7 +1,7 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-}
-
+// if (process.env.NODE_ENV !== 'production') {
+//     require('dotenv').config()
+// }
+const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
 const TodayGame = require('./models/todayGame');
@@ -19,7 +19,7 @@ const methodOverride = require('method-override')
 const initializePassport = require('./passport-config')
 
 
-
+dotenv.config()
 app.set('view engine', 'ejs')
 // so youre able to access the forms (in the req variable)
 // req.body.__  : anything after body is the name attribute from the form
@@ -33,6 +33,8 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
+
+const port = process.env.PORT || 3000
 
 const uri = process.env.DB_URI;
 
@@ -196,4 +198,6 @@ function checkNotAuthenticated(req, res, next) {
     next()
 }
 
-app.listen(3000)
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
+})

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <style>
+    .fantasy-container {
+      list-style: none;
+      border: 1px solid black;
+      width: 100%;
+    }
+    .categories {
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: white;
+    }
+    .player-label {
+      width: 40%;
+      text-align: center;
+    }
+    .fp-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .goals-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .assists-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .ppp-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .shp-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .shots-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .hits-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .blocks-label {
+      width: 7.5%;
+      text-align: center;
+    }
+    .player-row {
+      border-bottom: 1px solid black;
+      height: 50px;
+    }
+    .player {
+      text-align: left;
+    }
+    .player-img {
+        height: 40px;
+    }
+    .player-name {
+        font-weight: 500;
+    }
+    .player-points {
+        font-weight: 500;
+        text-align: center;
+    }
+    .player-goals {
+      text-align: center;
+    }
+    .player-assists {
+      text-align: center;
+    }
+    .player-ppp {
+      text-align: center;
+    }
+    .player-shp {
+      text-align: center;
+    }
+    .player-shots {
+      text-align: center;
+    }
+    .player-hits {
+      text-align: center;
+    }
+    .player-blocks {
+      text-align: center;
+    }
+    
+  </style>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/loggedInHeader'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h3>Yesterday's Top Fantasy Performers (Forwards)</h3>
+    <table>
+      <tr class="categories">
+        <td><a class="nav-link" href="/fantasy">All Skaters</a></td>
+        <td><a class="nav-link" href="/forwards">Forwards</a></td>
+        <td><a class="nav-link" href="/defensemen">Defensemen</a></td>
+        <td><a class="nav-link" href="/goalies">Goalies</a></td>
+      </tr>
+    </table>
+
+    <table class="fantasy-container" cellpadding="0" cellspacing="2">
+      <th>
+        <tr class="fantasy-labels">
+          <td class="player-label">
+            <span>Player</span>
+          </td>
+          <td class="fp-label">
+            <span>FPs</span>
+          </td>
+          <td class="goals-label">
+            <span>G</span>
+          </td>
+          <td class="assists-label">
+            <span>A</span>
+          </td>
+          <td class="ppp-label">
+            <span>PPP</span>
+          </td>
+          <td class="shp-label">
+            <span>SHP</span>
+          </td>
+          <td class="shots-label">
+            <span>Shots</span>
+          </td>
+          <td class="hits-label">
+            <span>Hits</span>
+          </td>
+          <td class="blocks-label">
+            <span>Blocks</span>
+          </td>
+        </tr>
+      </th>
+      
+      <% forwards.forEach(function(player) { %>
+          <tr class="player-row">
+            <td class="player">
+              <img class="player-img" src="<%= player.headshot %>" alt="article image">
+              <span class="player-name"><%= player.player %></span>
+              <span class="player-team-pos">(<%= player.team %> <%= player.position %>)</span>
+            </td>
+            <td class="player-points">
+              <span><%= player.fpoints %></span>
+            </td>
+            <td class="player-goals">
+              <span><%= player.goals %></span>
+            </td>
+            <td class="player-assists">
+              <span><%= player.assists %></span>
+            </td>
+            <td class="player-ppp">
+              <span><%= player.ppp %></span>
+            </td>
+            <td class="player-shp">
+              <span><%= player.shp %></span>
+            </td>
+            <td class="player-shots">
+              <span><%= player.shots %></span>
+            </td>
+            <td class="player-hits">
+              <span><%= player.hits %></span>
+            </td>
+            <td class="player-blocks">
+              <span><%= player.blocks %></span>
+            </td>
+          </tr>
+      <% }); %>
+    </table>
+
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

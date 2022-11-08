@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <style>
+    .division-container {
+      list-style: none;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    tr:nth-child(even) {
+      background-color: white;
+    }
+    .division {
+      width: 10%;
+      font-size: medium;
+    }
+    .team {
+      font-size: small;
+    }
+    .stat-l-label {
+      width: 5.625%;
+      font-size: small;
+      text-align: center;
+    }
+    .stat-label {
+      width: 5.625%;
+      font-size: small;
+      text-align: center;
+    }
+    .stat {
+      font-size: small;
+      text-align: center;
+    }
+    .team {
+      height: 20px;
+    }
+    .logo {
+      height: 20px;
+    }
+  </style>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/loggedInHeader'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h3>Standings</h3>
+    <h6>East</h6>
+    <table class="division-container" cellpadding="0" cellspacing="2">
+      <th>
+        <tr class="division-labels">
+          <td class="division">
+            <span>Atlantic</span>
+          </td>
+          <td class="gp-label stat-label">
+            <span>GP</span>
+          </td>
+          <td class="w-label stat-label">
+            <span>W</span>
+          </td>
+          <td class="l-label stat-label">
+            <span>L</span>
+          </td>
+          <td class="otl-label stat-label">
+            <span>OTL</span>
+          </td>
+          <td class="points-label stat-label">
+            <span>PTS</span>
+          </td>
+          <td class="rw-label stat-label">
+            <span>RW</span>
+          </td>
+          <td class="row-label stat-label">
+            <span>ROW</span>
+          </td>
+          <td class="sow-label stat-label">
+            <span>SOW</span>
+          </td>
+          <td class="sol-label stat-label">
+            <span>SOL</span>
+          </td>
+          <td class="home-label stat-l-label">
+            <span>HOME</span>
+          </td>
+          <td class="away-label stat-l-label">
+            <span>AWAY</span>
+          </td>
+          <td class="gf-label stat-label">
+            <span>GF</span>
+          </td>
+          <td class="ga-label stat-label">
+            <span>GA</span>
+          </td>
+          <td class="diff-label stat-label">
+            <span>DIFF</span>
+          </td>
+          <td class="l10-label stat-l-label">
+            <span>L10</span>
+          </td>
+          <td class="streak-label stat-label">
+            <span>STRK</span>
+          </td>
+        </tr>
+      </th>
+      
+      <% atlantic.forEach(function(team) { %>
+          <tr class="team-row">
+            <td class="team">
+              <img class="logo" src="<%= team.team.logo %>" alt="">
+              <span><%= team.team.name %></span>
+            </td>
+            <td class="gp stat">
+              <span><%= team.stats.gp %></span>
+            </td>
+            <td class="w stat">
+              <span><%= team.stats.wins %></span>
+            </td>
+            <td class="l stat">
+              <span><%= team.stats.losses %></span>
+            </td>
+            <td class="otl stat">
+              <span><%= team.stats.otl %></span>
+            </td>
+            <td class="points stat">
+              <span><%= team.stats.points %></span>
+            </td>
+            <td class="rw stat">
+              <span><%= team.stats.reg_w %></span>
+            </td>
+            <td class="stat">
+              <span><%= team.stats.reg_ot_w %></span>
+            </td>
+            <td class="sow stat">
+              <span><%= team.stats.sow %></span>
+            </td>
+            <td class="sol stat">
+              <span><%= team.stats.sol %></span>
+            </td>
+            <td class="home stat">
+              <span><%= team.stats.home %></span>
+            </td>
+            <td class="away stat">
+              <span><%= team.stats.away %></span>
+            </td>
+            <td class="gf stat">
+              <span><%= team.stats.gf %></span>
+            </td>
+            <td class="ga stat">
+              <span><%= team.stats.ga %></span>
+            </td>
+            <td class="diff stat">
+              <span><%= team.stats.diff %></span>
+            </td>
+            <td class="l10 stat">
+              <span><%= team.stats.l10 %></span>
+            </td>
+            <td class="streak stat">
+              <span><%= team.stats.streak %></span>
+            </td>
+          </tr>
+      <% }); %>
+    </table>
+
+
+    <table class="division-container" cellpadding="0" cellspacing="2">
+      <th>
+        <tr class="division-labels">
+          <td class="division">
+            <span>Metropolitan</span>
+          </td>
+          <td class="gp-label stat-label">
+            <span>GP</span>
+          </td>
+          <td class="w-label stat-label">
+            <span>W</span>
+          </td>
+          <td class="l-label stat-label">
+            <span>L</span>
+          </td>
+          <td class="otl-label stat-label">
+            <span>OTL</span>
+          </td>
+          <td class="points-label stat-label">
+            <span>PTS</span>
+          </td>
+          <td class="rw-label stat-label">
+            <span>RW</span>
+          </td>
+          <td class="row-label stat-label">
+            <span>ROW</span>
+          </td>
+          <td class="sow-label stat-label">
+            <span>SOW</span>
+          </td>
+          <td class="sol-label stat-label">
+            <span>SOL</span>
+          </td>
+          <td class="home-label stat-l-label">
+            <span>HOME</span>
+          </td>
+          <td class="away-label stat-l-label">
+            <span>AWAY</span>
+          </td>
+          <td class="gf-label stat-label">
+            <span>GF</span>
+          </td>
+          <td class="ga-label stat-label">
+            <span>GA</span>
+          </td>
+          <td class="diff-label stat-label">
+            <span>DIFF</span>
+          </td>
+          <td class="l10-label stat-l-label">
+            <span>L10</span>
+          </td>
+          <td class="streak-label stat-label">
+            <span>STRK</span>
+          </td>
+        </tr>
+      </th>
+      
+      <% metro.forEach(function(team) { %>
+          <tr class="team-row">
+            <td class="team">
+              <img class="logo" src="<%= team.team.logo %>" alt="">
+              <span><%= team.team.name %></span>
+            </td>
+            <td class="gp stat">
+              <span><%= team.stats.gp %></span>
+            </td>
+            <td class="w stat">
+              <span><%= team.stats.wins %></span>
+            </td>
+            <td class="l stat">
+              <span><%= team.stats.losses %></span>
+            </td>
+            <td class="otl stat">
+              <span><%= team.stats.otl %></span>
+            </td>
+            <td class="points stat">
+              <span><%= team.stats.points %></span>
+            </td>
+            <td class="rw stat">
+              <span><%= team.stats.reg_w %></span>
+            </td>
+            <td class="stat">
+              <span><%= team.stats.reg_ot_w %></span>
+            </td>
+            <td class="sow stat">
+              <span><%= team.stats.sow %></span>
+            </td>
+            <td class="sol stat">
+              <span><%= team.stats.sol %></span>
+            </td>
+            <td class="home stat">
+              <span><%= team.stats.home %></span>
+            </td>
+            <td class="away stat">
+              <span><%= team.stats.away %></span>
+            </td>
+            <td class="gf stat">
+              <span><%= team.stats.gf %></span>
+            </td>
+            <td class="ga stat">
+              <span><%= team.stats.ga %></span>
+            </td>
+            <td class="diff stat">
+              <span><%= team.stats.diff %></span>
+            </td>
+            <td class="l10 stat">
+              <span><%= team.stats.l10 %></span>
+            </td>
+            <td class="streak stat">
+              <span><%= team.stats.streak %></span>
+            </td>
+          </tr>
+      <% }); %>
+    </table>
+
+    
+    <h6>West</h6>
+
+    <table class="division-container" cellpadding="0" cellspacing="2">
+      <th>
+        <tr class="division-labels">
+          <td class="division">
+            <span>Central</span>
+          </td>
+          <td class="gp-label stat-label">
+            <span>GP</span>
+          </td>
+          <td class="w-label stat-label">
+            <span>W</span>
+          </td>
+          <td class="l-label stat-label">
+            <span>L</span>
+          </td>
+          <td class="otl-label stat-label">
+            <span>OTL</span>
+          </td>
+          <td class="points-label stat-label">
+            <span>PTS</span>
+          </td>
+          <td class="rw-label stat-label">
+            <span>RW</span>
+          </td>
+          <td class="row-label stat-label">
+            <span>ROW</span>
+          </td>
+          <td class="sow-label stat-label">
+            <span>SOW</span>
+          </td>
+          <td class="sol-label stat-label">
+            <span>SOL</span>
+          </td>
+          <td class="home-label stat-l-label">
+            <span>HOME</span>
+          </td>
+          <td class="away-label stat-l-label">
+            <span>AWAY</span>
+          </td>
+          <td class="gf-label stat-label">
+            <span>GF</span>
+          </td>
+          <td class="ga-label stat-label">
+            <span>GA</span>
+          </td>
+          <td class="diff-label stat-label">
+            <span>DIFF</span>
+          </td>
+          <td class="l10-label stat-l-label">
+            <span>L10</span>
+          </td>
+          <td class="streak-label stat-label">
+            <span>STRK</span>
+          </td>
+        </tr>
+      </th>
+      
+      <% central.forEach(function(team) { %>
+          <tr class="team-row">
+            <td class="team">
+              <img class="logo" src="<%= team.team.logo %>" alt="">
+              <span><%= team.team.name %></span>
+            </td>
+            <td class="gp stat">
+              <span><%= team.stats.gp %></span>
+            </td>
+            <td class="w stat">
+              <span><%= team.stats.wins %></span>
+            </td>
+            <td class="l stat">
+              <span><%= team.stats.losses %></span>
+            </td>
+            <td class="otl stat">
+              <span><%= team.stats.otl %></span>
+            </td>
+            <td class="points stat">
+              <span><%= team.stats.points %></span>
+            </td>
+            <td class="rw stat">
+              <span><%= team.stats.reg_w %></span>
+            </td>
+            <td class="stat">
+              <span><%= team.stats.reg_ot_w %></span>
+            </td>
+            <td class="sow stat">
+              <span><%= team.stats.sow %></span>
+            </td>
+            <td class="sol stat">
+              <span><%= team.stats.sol %></span>
+            </td>
+            <td class="home stat">
+              <span><%= team.stats.home %></span>
+            </td>
+            <td class="away stat">
+              <span><%= team.stats.away %></span>
+            </td>
+            <td class="gf stat">
+              <span><%= team.stats.gf %></span>
+            </td>
+            <td class="ga stat">
+              <span><%= team.stats.ga %></span>
+            </td>
+            <td class="diff stat">
+              <span><%= team.stats.diff %></span>
+            </td>
+            <td class="l10 stat">
+              <span><%= team.stats.l10 %></span>
+            </td>
+            <td class="streak stat">
+              <span><%= team.stats.streak %></span>
+            </td>
+          </tr>
+      <% }); %>
+    </table>
+
+
+    <table class="division-container" cellpadding="0" cellspacing="2">
+      <th>
+        <tr class="division-labels">
+          <td class="division">
+            <span>Pacific</span>
+          </td>
+          <td class="gp-label stat-label">
+            <span>GP</span>
+          </td>
+          <td class="w-label stat-label">
+            <span>W</span>
+          </td>
+          <td class="l-label stat-label">
+            <span>L</span>
+          </td>
+          <td class="otl-label stat-label">
+            <span>OTL</span>
+          </td>
+          <td class="points-label stat-label">
+            <span>PTS</span>
+          </td>
+          <td class="rw-label stat-label">
+            <span>RW</span>
+          </td>
+          <td class="row-label stat-label">
+            <span>ROW</span>
+          </td>
+          <td class="sow-label stat-label">
+            <span>SOW</span>
+          </td>
+          <td class="sol-label stat-label">
+            <span>SOL</span>
+          </td>
+          <td class="home-label stat-l-label">
+            <span>HOME</span>
+          </td>
+          <td class="away-label stat-l-label">
+            <span>AWAY</span>
+          </td>
+          <td class="gf-label stat-label">
+            <span>GF</span>
+          </td>
+          <td class="ga-label stat-label">
+            <span>GA</span>
+          </td>
+          <td class="diff-label stat-label">
+            <span>DIFF</span>
+          </td>
+          <td class="l10-label stat-l-label">
+            <span>L10</span>
+          </td>
+          <td class="streak-label stat-label">
+            <span>STRK</span>
+          </td>
+        </tr>
+      </th>
+      
+      <% pacific.forEach(function(team) { %>
+          <tr class="team-row">
+            <td class="team">
+              <img class="logo" src="<%= team.team.logo %>" alt="">
+              <span><%= team.team.name %></span>
+            </td>
+            <td class="gp stat">
+              <span><%= team.stats.gp %></span>
+            </td>
+            <td class="w stat">
+              <span><%= team.stats.wins %></span>
+            </td>
+            <td class="l stat">
+              <span><%= team.stats.losses %></span>
+            </td>
+            <td class="otl stat">
+              <span><%= team.stats.otl %></span>
+            </td>
+            <td class="points stat">
+              <span><%= team.stats.points %></span>
+            </td>
+            <td class="rw stat">
+              <span><%= team.stats.reg_w %></span>
+            </td>
+            <td class="stat">
+              <span><%= team.stats.reg_ot_w %></span>
+            </td>
+            <td class="sow stat">
+              <span><%= team.stats.sow %></span>
+            </td>
+            <td class="sol stat">
+              <span><%= team.stats.sol %></span>
+            </td>
+            <td class="home stat">
+              <span><%= team.stats.home %></span>
+            </td>
+            <td class="away stat">
+              <span><%= team.stats.away %></span>
+            </td>
+            <td class="gf stat">
+              <span><%= team.stats.gf %></span>
+            </td>
+            <td class="ga stat">
+              <span><%= team.stats.ga %></span>
+            </td>
+            <td class="diff stat">
+              <span><%= team.stats.diff %></span>
+            </td>
+            <td class="l10 stat">
+              <span><%= team.stats.l10 %></span>
+            </td>
+            <td class="streak stat">
+              <span><%= team.stats.streak %></span>
+            </td>
+          </tr>
+      <% }); %>
+    </table>
+
+
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

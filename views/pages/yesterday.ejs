@@ -1,0 +1,229 @@
+<%- include('../partials/head'); %>
+  <style>
+    .team-logo {
+      width: 60px;
+    }
+    .game {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #333;
+      border-top: 1px solid #333;
+    }
+    .game-table {
+      width: 90%;
+      margin: 25px;
+      
+    }
+    .game-labels {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .team-info {
+      width: 50%;
+      height: 80px;
+      text-align: left;
+    }
+    .status {
+      text-align: left;
+    }
+    .team1-row {
+      text-align: center;
+    }
+    .team2-row {
+      text-align: center;
+    }
+    .period {
+      width: 10%;
+      border: 1px solid white;
+      background-color: #333;
+      color: white;
+    }
+    .period-empty {
+      width: 10%;
+    }
+    .total {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/loggedInHeader'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h3>Yesterday's Scores</h3>
+
+    
+    <% games.forEach(function(game) { %>
+      <div class="game">
+      <table class="game-table">
+        <% if (game.status === 'Final/OT') { %>
+          <tr class="game-labels">
+            <td class="status"><%= game.status %></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>OT</td>
+            <td>T</td>
+          </tr>
+          <tr class="team1-row">
+            <td class="team-info">
+              <img class="team-logo" src="<%= game.team1.logo %>" alt="">
+              <span><%= game.team1.team %> (<%= game.team1.record %>)</span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[0] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[1] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[2] %></span>
+            </td class="period">
+            <td class="period">
+              <span><%= game.team1.periods[3] %></span>
+            </td>
+            <td class="period total">
+              <span><%= game.team1.score %></span>
+            </td>
+          </tr>
+          <tr class="team2-row">
+            <td class="team-info">
+              <img class="team-logo" src="<%= game.team2.logo %>" alt="">
+              <span><%= game.team2.team %> (<%= game.team2.record %>)</span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[0] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[1] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[2] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[3] %></span>
+            </td>
+            <td class="period total">
+              <span><%= game.team2.score %></span>
+            </td>
+          </tr>
+        <% } %>
+
+        <% if (game.status === 'Final/SO') { %>
+          <tr class="game-labels">
+            <td class="status"><%= game.status %></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>SO</td>
+            <td>T</td>
+          </tr>
+          <tr class="team1-row">
+            <td class="team-info">
+              <img class="team-logo" src="<%= game.team1.logo %>" alt="">
+              <span><%= game.team1.team %> (<%= game.team1.record %>)</span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[0] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[1] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[2] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[3] %></span>
+            </td>
+            <td class="period total">
+              <span><%= game.team1.score %></span>
+            </td>
+          </tr>
+          <tr class="team2-row">
+            <td class="team-info">
+              <img class="team-logo" src="<%= game.team2.logo %>" alt="">
+              <span><%= game.team2.team %> (<%= game.team2.record %>)</span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[0] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[1] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[2] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[3] %></span>
+            </td>
+            <td class="period total">
+              <span><%= game.team2.score %></span>
+            </td>
+          </tr>
+        <% } %>
+
+        <% if (game.status === 'Final') { %>
+          <tr class="game-labels">
+            <td class="status"><%= game.status %></td>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>T</td>
+          </tr>
+          <tr class="team1-row">
+            <td class="team-info">
+              <img class="team-logo" src="<%= game.team1.logo %>" alt="">
+              <span><%= game.team1.team %> (<%= game.team1.record %>)</span>
+            </td>
+            <td class="period-empty"></td>
+            <td class="period">
+              <span><%= game.team1.periods[0] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[1] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team1.periods[2] %></span>
+            </td>
+            <td class="period total">
+              <span><%= game.team1.score %></span>
+            </td>
+          </tr>
+          <tr class="team2-row">
+            <td class="team-info">
+              <img class="team-logo" src="<%= game.team2.logo %>" alt="">
+              <span><%= game.team2.team %> (<%= game.team2.record %>)</span>
+            </td>
+            <td class="period-empty"></td>
+            <td class="period">
+              <span><%= game.team2.periods[0] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[1] %></span>
+            </td>
+            <td class="period">
+              <span><%= game.team2.periods[2] %></span>
+            </td>
+            <td class="period total">
+              <span><%= game.team2.score %></span>
+            </td>
+          </tr>
+        <% } %>
+      </table>
+    </div>
+      <% }); %>
+      
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

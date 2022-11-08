@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <style>
+    .games-container {
+      list-style: none;
+    }
+    .game-table {
+      width: 100%;
+      margin: 10px;
+    }
+    .game-row {
+      width: 100%;
+      height: 75px;
+    }
+    .team1 {
+      width: 35%;
+      text-align: center;
+    }
+    .team2 {
+      width: 35%;
+      text-align: center;
+    }
+    .game-info {
+      width: 30%;
+      text-align: center;
+    }
+    .team-img {
+      width: 60px;
+    }
+    .betting-table {
+      width: 100%;
+    }
+    .betting-table-labels {
+      border: 1px solid white;
+      background-color: #333;
+      color: white;
+      text-align: center;
+    }
+    .betting-table-row {
+      height: 80px;
+      background-color: #333;
+      color: white;
+      border-left: 1px solid white;border-right: 1px solid white;border-bottom: 1px solid white; text-align: center;
+    }
+  </style>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/loggedInHeader'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h3>Today's Matchups</h3>
+    
+    
+      <% games.forEach(function(game) { %>
+      <table class="game-table">
+        <tr class="game-row">
+          <td class="team1" style="width: 30%;">
+            <img class="team-img" src="<%= game.team1.logo %>" alt="">
+            <p>(<%= game.team1.record %>)</p>
+          </td>
+          <td>
+            <span style="width: 10%;">VS</span>
+          </td>
+          <td class="team2" style="width: 30%;">
+            <img class="team-img" src="<%= game.team2.logo %>" alt="">
+            <p>(<%= game.team2.record %>)</p>
+          </td>
+          <td class="game-info" style="width: 30%; border-left: 1px solid #333;">
+            <span><%= game.time %></span>
+            <span><%= game.network %></span>
+          </td>
+        </tr>
+      </table>
+      <table class="betting-table">
+        <tr class="betting-table-labels">
+          <td></td>
+          <td>PUCK LINE</td>
+          <td>TOTAL</td>
+          <td>MONEYLINE</td>
+              
+        </tr>
+        <tr class="betting-table-row">
+          <td>
+            <span class="team-name"><%= game.team1.team %></span>
+          </td>
+          <td>
+            <span class="team-name"><%= game.team1.puckline %> (<%= game.team1.puckline_odds %>)</span>
+          </td>
+          <td>
+            <span class="team-name"><%= game.ou.o %> (<%= game.ou.o_odds %>)</span>
+          </td>
+          <td>
+            <span class="team-name"><%= game.team1.moneyline %></span>
+          </td>
+          
+        </tr>
+        <tr class="betting-table-row">
+          <td>
+            <span class="team-name"><%= game.team2.team %></span>
+          </td>
+          <td>
+            <span class="team-name"><%= game.team2.puckline %> (<%= game.team2.puckline_odds %>)</span>
+          </td>
+          <td>
+            <span class="team-name"><%= game.ou.u %> (<%= game.ou.u_odds %>)</span>
+          </td>
+          <td>
+            <span class="team-name"><%= game.team2.moneyline %></span>
+          </td>
+        </tr>
+      </table>  
+      <% }); %>
+
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

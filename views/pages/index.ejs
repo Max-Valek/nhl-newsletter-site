@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <style>
+        .articles-container {
+          list-style: none;
+          margin-top: 20px;
+        }
+        .article {
+        width: 100%;
+        }
+        .article-img {
+            width: 100%;
+        }
+        .article-title {
+          padding: 10px;
+            border-bottom: 1px solid black;
+        }
+      </style>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/loggedInHeader'); %>
+      
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h3>Latest NHL Headlines</h3>
+            <span class="read-more">Read more <a href="https://www.espn.com/nhl/">here</a> </span>
+
+            <ul class="articles-container">
+            <% articles.forEach(function(article) { %>
+                <li class="article">
+                <img class="article-img" src="<%= article.image %>" alt="article image">
+                <h3 class="article-title"><%= article.title %></h3>
+                <h5 class="article-summary"><%= article.summary %></h5>
+                <p class="article-author"><%= article.author %> (ESPN)</p>
+                </li>
+            <% }); %>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+</html>

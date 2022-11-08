@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <style>
+    .fantasy-container {
+      list-style: none;
+      border: 1px solid black;
+      width: 100%;
+    }
+    .categories {
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: white;
+    }
+    .player-label {
+      width: 40%;
+      text-align: center;
+    }
+    .points-label {
+      width: 10%;
+      text-align: center;
+    }
+    .wins-label {
+      width: 10%;
+      text-align: center;
+    }
+    .ga-label {
+      width: 10%;
+      text-align: center;
+    }
+    .saves-label {
+      width: 10%;
+      text-align: center;
+    }
+    .so-label {
+      width: 10%;
+      text-align: center;
+    }
+    .otl-label {
+      width: 10%;
+      text-align: center;
+    }
+    .player-row {
+      border-bottom: 1px solid black;
+      height: 50px;
+    }
+    .player {
+      text-align: left;
+    }
+    .player-img {
+        height: 40px;
+    }
+    .player-name {
+        font-weight: 500;
+    }
+    .player-points {
+        font-weight: 500;
+        text-align: center;
+    }
+    .player-wins {
+      text-align: center;
+    }
+    .player-ga {
+      text-align: center;
+    }
+    .player-saves {
+      text-align: center;
+    }
+    .player-so {
+      text-align: center;
+    }
+    .player-otl {
+      text-align: center;
+    }
+    
+  </style>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/loggedInHeader'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h3>Yesterday's Top Fantasy Performers (Goalies)</h3>
+    <table>
+      <tr class="categories">
+        <td><a class="nav-link" href="/fantasy">All Skaters</a></td>
+        <td><a class="nav-link" href="/forwards">Forwards</a></td>
+        <td><a class="nav-link" href="/defensemen">Defensemen</a></td>
+        <td><a class="nav-link" href="/goalies">Goalies</a></td>
+      </tr>
+    </table>
+
+    <table class="fantasy-container" cellpadding="0" cellspacing="2">
+      <th>
+        <tr class="fantasy-labels">
+          <td class="player-label">
+            <span>Player</span>
+          </td>
+          <td class="points-label">
+            <span>FPs</span>
+          </td>
+          <td class="wins-label">
+            <span>W</span>
+          </td>
+          <td class="ga-label">
+            <span>GA</span>
+          </td>
+          <td class="saves-label">
+            <span>Saves</span>
+          </td>
+          <td class="so-label">
+            <span>SO</span>
+          </td>
+          <td class="otl-label">
+            <span>OTL</span>
+          </td>
+        </tr>
+      </th>
+      
+      <% goalies.forEach(function(player) { %>
+          <tr class="player-row">
+            <td class="player">
+              <img class="player-img" src="<%= player.headshot %>" alt="article image">
+              <span class="player-name"><%= player.player %></span>
+              <span class="player-team-pos">(<%= player.team %> <%= player.position %>)</span>
+            </td>
+            <td class="player-points">
+              <span><%= player.fpoints %></span>
+            </td>
+            <td class="player-wins">
+              <span><%= player.wins %></span>
+            </td>
+            <td class="player-ga">
+              <span><%= player.ga %></span>
+            </td>
+            <td class="player-saves">
+              <span><%= player.saves %></span>
+            </td>
+            <td class="player-so">
+              <span><%= player.so %></span>
+            </td>
+            <td class="player-otl">
+              <span><%= player.otl %></span>
+            </td>
+          </tr>
+      <% }); %>
+    </table>
+
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
